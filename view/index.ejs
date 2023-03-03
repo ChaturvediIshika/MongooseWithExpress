@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <style>
+        .product{
+            width: 460px;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.26);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 15px;
+        }
+        section{
+            width: 80vw;
+            margin: 10px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Products</h1>
+    <br>
+    <a href="/products/new">Add New Product</a>
+    <section>
+        <%for(let p of products){%>
+            <article class="product">
+                <h3><%=p.name%></h3>
+                <h4><%=p.price%></h4>
+                <p><%=p.desc%></p>
+                <a href="/products/<%=p.id%>"><button>BUY NOW</button></a>
+                <a href="/products/<%=p.id%>/edit"><button>EDIT</button></a>
+                <form action="/products/<%=p.id%>?_method=DELETE" method="POST"><button>DELETE</button></form>
+            </article>
+        <%}%>
+    </section>
+</body>
+</html>
